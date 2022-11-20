@@ -1,17 +1,23 @@
 //
-//  NoteAppApp.swift
-//  NoteApp
+//  NotelyApp.swift
+//  Notely
 //
-//  Created by macbook on 20.11.2022.
+//  Created by Marasy Phi on 9/1/21.
 //
 
 import SwiftUI
 
 @main
 struct NoteAppApp: App {
+    
+    @StateObject var noteViewModel: NoteViewModel = NoteViewModel()
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            NavigationView{  // теперь все вью в проекте будут
+                ContentView()  // старотовое View
+            }
+            .environmentObject(noteViewModel)
         }
     }
 }

@@ -11,6 +11,21 @@
 		FA09B3D7292A9765007A83C1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA09B3D6292A9765007A83C1 /* ContentView.swift */; };
 		FA09B3D9292A9768007A83C1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA09B3D8292A9768007A83C1 /* Assets.xcassets */; };
 		FA09B3DC292A9768007A83C1 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA09B3DB292A9768007A83C1 /* Preview Assets.xcassets */; };
+		FA09B3E6292A97ED007A83C1 /* NoteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA09B3E5292A97ED007A83C1 /* NoteModel.swift */; };
+		FA09B3E8292A9817007A83C1 /* NoteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA09B3E7292A9817007A83C1 /* NoteViewModel.swift */; };
+		FA09B3EA292A9856007A83C1 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA09B3E9292A9856007A83C1 /* HomeView.swift */; };
+		FA09B3EC292A987C007A83C1 /* NoteDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA09B3EB292A987C007A83C1 /* NoteDetailView.swift */; };
+		FA09B3EE292A9896007A83C1 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA09B3ED292A9896007A83C1 /* SettingsView.swift */; };
+		FA09B3F0292A98B7007A83C1 /* NoItemsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA09B3EF292A98B7007A83C1 /* NoItemsView.swift */; };
+		FA09B3F2292A98F4007A83C1 /* AddNewNote.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA09B3F1292A98F4007A83C1 /* AddNewNote.swift */; };
+		FA09B3F4292A9912007A83C1 /* EnterPassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA09B3F3292A9912007A83C1 /* EnterPassword.swift */; };
+		FA09B3F6292A9941007A83C1 /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA09B3F5292A9941007A83C1 /* Color+Extension.swift */; };
+		FA09B3F8292A995B007A83C1 /* Font+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA09B3F7292A995B007A83C1 /* Font+Extension.swift */; };
+		FA09B3FF292A9979007A83C1 /* Metropolis-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = FA09B3FA292A9979007A83C1 /* Metropolis-Bold.otf */; };
+		FA09B400292A9979007A83C1 /* Metropolis-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = FA09B3FB292A9979007A83C1 /* Metropolis-Regular.otf */; };
+		FA09B401292A9979007A83C1 /* Metropolis-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = FA09B3FC292A9979007A83C1 /* Metropolis-Black.otf */; };
+		FA09B402292A9979007A83C1 /* Metropolis-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = FA09B3FD292A9979007A83C1 /* Metropolis-Medium.otf */; };
+		FA09B403292A9979007A83C1 /* Metropolis-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = FA09B3FE292A9979007A83C1 /* Metropolis-SemiBold.otf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +34,21 @@
 		FA09B3D6292A9765007A83C1 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		FA09B3D8292A9768007A83C1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FA09B3DB292A9768007A83C1 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		FA09B3E5292A97ED007A83C1 /* NoteModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteModel.swift; sourceTree = "<group>"; };
+		FA09B3E7292A9817007A83C1 /* NoteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteViewModel.swift; sourceTree = "<group>"; };
+		FA09B3E9292A9856007A83C1 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		FA09B3EB292A987C007A83C1 /* NoteDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteDetailView.swift; sourceTree = "<group>"; };
+		FA09B3ED292A9896007A83C1 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		FA09B3EF292A98B7007A83C1 /* NoItemsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoItemsView.swift; sourceTree = "<group>"; };
+		FA09B3F1292A98F4007A83C1 /* AddNewNote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewNote.swift; sourceTree = "<group>"; };
+		FA09B3F3292A9912007A83C1 /* EnterPassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterPassword.swift; sourceTree = "<group>"; };
+		FA09B3F5292A9941007A83C1 /* Color+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
+		FA09B3F7292A995B007A83C1 /* Font+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Font+Extension.swift"; sourceTree = "<group>"; };
+		FA09B3FA292A9979007A83C1 /* Metropolis-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Metropolis-Bold.otf"; sourceTree = "<group>"; };
+		FA09B3FB292A9979007A83C1 /* Metropolis-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Metropolis-Regular.otf"; sourceTree = "<group>"; };
+		FA09B3FC292A9979007A83C1 /* Metropolis-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Metropolis-Black.otf"; sourceTree = "<group>"; };
+		FA09B3FD292A9979007A83C1 /* Metropolis-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Metropolis-Medium.otf"; sourceTree = "<group>"; };
+		FA09B3FE292A9979007A83C1 /* Metropolis-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Metropolis-SemiBold.otf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,10 +81,13 @@
 		FA09B3D3292A9765007A83C1 /* NoteApp */ = {
 			isa = PBXGroup;
 			children = (
+				FA09B3E2292A979E007A83C1 /* Model */,
+				FA09B3E3292A97A9007A83C1 /* View */,
 				FA09B3D4292A9765007A83C1 /* NoteAppApp.swift */,
-				FA09B3D6292A9765007A83C1 /* ContentView.swift */,
+				FA09B3E4292A97B2007A83C1 /* Extension */,
 				FA09B3D8292A9768007A83C1 /* Assets.xcassets */,
 				FA09B3DA292A9768007A83C1 /* Preview Content */,
+				FA09B3F9292A9979007A83C1 /* Font */,
 			);
 			path = NoteApp;
 			sourceTree = "<group>";
@@ -65,6 +98,50 @@
 				FA09B3DB292A9768007A83C1 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		FA09B3E2292A979E007A83C1 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				FA09B3E5292A97ED007A83C1 /* NoteModel.swift */,
+				FA09B3E7292A9817007A83C1 /* NoteViewModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		FA09B3E3292A97A9007A83C1 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				FA09B3D6292A9765007A83C1 /* ContentView.swift */,
+				FA09B3E9292A9856007A83C1 /* HomeView.swift */,
+				FA09B3EB292A987C007A83C1 /* NoteDetailView.swift */,
+				FA09B3ED292A9896007A83C1 /* SettingsView.swift */,
+				FA09B3EF292A98B7007A83C1 /* NoItemsView.swift */,
+				FA09B3F1292A98F4007A83C1 /* AddNewNote.swift */,
+				FA09B3F3292A9912007A83C1 /* EnterPassword.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		FA09B3E4292A97B2007A83C1 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				FA09B3F5292A9941007A83C1 /* Color+Extension.swift */,
+				FA09B3F7292A995B007A83C1 /* Font+Extension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		FA09B3F9292A9979007A83C1 /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				FA09B3FA292A9979007A83C1 /* Metropolis-Bold.otf */,
+				FA09B3FB292A9979007A83C1 /* Metropolis-Regular.otf */,
+				FA09B3FC292A9979007A83C1 /* Metropolis-Black.otf */,
+				FA09B3FD292A9979007A83C1 /* Metropolis-Medium.otf */,
+				FA09B3FE292A9979007A83C1 /* Metropolis-SemiBold.otf */,
+			);
+			path = Font;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -125,8 +202,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA09B401292A9979007A83C1 /* Metropolis-Black.otf in Resources */,
 				FA09B3DC292A9768007A83C1 /* Preview Assets.xcassets in Resources */,
+				FA09B403292A9979007A83C1 /* Metropolis-SemiBold.otf in Resources */,
 				FA09B3D9292A9768007A83C1 /* Assets.xcassets in Resources */,
+				FA09B400292A9979007A83C1 /* Metropolis-Regular.otf in Resources */,
+				FA09B402292A9979007A83C1 /* Metropolis-Medium.otf in Resources */,
+				FA09B3FF292A9979007A83C1 /* Metropolis-Bold.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -137,7 +219,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA09B3EE292A9896007A83C1 /* SettingsView.swift in Sources */,
+				FA09B3E8292A9817007A83C1 /* NoteViewModel.swift in Sources */,
+				FA09B3F8292A995B007A83C1 /* Font+Extension.swift in Sources */,
 				FA09B3D7292A9765007A83C1 /* ContentView.swift in Sources */,
+				FA09B3F2292A98F4007A83C1 /* AddNewNote.swift in Sources */,
+				FA09B3E6292A97ED007A83C1 /* NoteModel.swift in Sources */,
+				FA09B3EC292A987C007A83C1 /* NoteDetailView.swift in Sources */,
+				FA09B3EA292A9856007A83C1 /* HomeView.swift in Sources */,
+				FA09B3F4292A9912007A83C1 /* EnterPassword.swift in Sources */,
+				FA09B3F0292A98B7007A83C1 /* NoItemsView.swift in Sources */,
+				FA09B3F6292A9941007A83C1 /* Color+Extension.swift in Sources */,
 				FA09B3D5292A9765007A83C1 /* NoteAppApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
