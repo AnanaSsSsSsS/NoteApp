@@ -14,49 +14,27 @@ struct NoteDetailView: View {
     @State var newTitle: String = ""
     @State var newDate: String = ""
     @State var newDescription: String = ""
-
+    
     var leadingButton: some View {
-        Button(action: {
-            presentedMode.wrappedValue.dismiss()
-        }) {
-            Image(systemName: "chevron.backward")
-                .foregroundColor(.primaryRed)
+        HStack {
+            Button(action: {
+                presentedMode.wrappedValue.dismiss()
+            }) {
+                Image(systemName: "chevron.backward")
+                    .foregroundColor(.primaryRed)
+            }
+            Spacer()
+            Text(note.date)
+                .foregroundColor(.black)
+
         }
     }
     
     var body: some View {
-//        ZStack(alignment: .bottom) {
-            ScrollView {
-                VStack(alignment: .leading, spacing: 8) {
-                    TextEditor(text: $note.title)
-//                        .textSelection(.enabled)
-                        .frame(width: .infinity, height: 30)
-                        .foregroundColor(.primaryRed)
-                        .lineLimit(1)
-                        .font(.headline)
-                        .padding(.top, 15)
-                        .padding(.horizontal)
-                    TextEditor(text: $note.date)
-                        .frame(width: .infinity, height: 30)
-                        .font(.primary(.medium, size: 13))
-                        .foregroundColor(.primary)
-                        .padding(.horizontal)
-                    TextEditor(text: $note.description)
-                        .frame(width: .infinity, height: 30)
-                        .foregroundColor(Color.black)
-                        .padding()
-                    HStack{
-                        Spacer()
-                    }
-                }
-                .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: Alignment.topLeading )
-                .padding()
-            }
-            
-//        }
-//        .edgesIgnoringSafeArea(.bottom)
+                
+        mainBody
+        
         .background(Color("backgroundForTitle"))
-//        .navigationBarTitleDisplayMode(.inline)
         .navigationBarItems(leading: leadingButton,
                             trailing: Button(action: {
                         updateMyNewNote()
@@ -69,21 +47,11 @@ struct NoteDetailView: View {
     
     func updateMyNewNote() {
         
-        noteViewModel.updateNotes(id: note.id, title: note.title, date: note.date, description: note.description)  //почему не работает
+        noteViewModel.updateNotes(id: note.id, title: note.title, date: note.date, description: note.description)
         
         noteViewModel.saveNotes()
     }
     
-}
-
-struct RoundedCorner: Shape {
-    var radius: CGFloat = 0.0
-    var corners: UIRectCorner = .allCorners
-    
-    func path(in rect: CGRect) -> Path {
-        let path = UIBezierPath(roundedRect: rect, byRoundingCorners: corners, cornerRadii: .init(width: radius, height: radius))
-        return Path(path.cgPath)
-    }
 }
 
 struct NoteDetailViewPreview: PreviewProvider {
@@ -95,5 +63,46 @@ struct NoteDetailViewPreview: PreviewProvider {
     }
 
     
+}
+
+extension NoteDetailView {
+    private var mainBody: some View {
+        VStack(alignment: .leading, spacing: 4) {
+            if #available(iOS 15.0, *) {
+                TextEditor(text: $note.title)
+                    .multilineTextAlignment(.leading)
+                    .textSelection(.enabled)
+                    .foregroundColor(.primaryRed)
+                    .lineLimit(1)
+                    .font(.headline)
+                    .padding(.top, 15)
+                    .padding(.horizontal)
+            } else {
+                TextEditor(text: $note.title)
+                    .multilineTextAlignment(.leading)
+                    .foregroundColor(.primaryRed)
+                    .lineLimit(1)
+                    .font(.headline)
+                    .padding(.top, 15)
+                    .padding(.horizontal)
+            }
+            
+            if #available(iOS 15.0, *) {
+                TextEditor(text: $note.description)
+                    .multilineTextAlignment(.leading)
+                    .textSelection(.enabled)
+                    .foregroundColor(Color.black)
+                    .padding()
+            } else {
+                TextEditor(text: $note.description)
+                    .multilineTextAlignment(.leading)
+                    .foregroundColor(Color.black)
+                    .padding()
+            }
+
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .padding(.vertical, 15)
+    }
 }
 

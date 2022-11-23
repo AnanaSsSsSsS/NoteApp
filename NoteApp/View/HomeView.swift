@@ -90,13 +90,14 @@ struct NoteViewItem : View {
         
         VStack(alignment: .leading, spacing: nil, content: {
                 VStack(alignment: .leading, spacing: 4) {
-                    Text(note.title)
-                        .foregroundColor(.primaryRed)
-                        .font(.primary(.bold, size: 17))
-                        .padding(.leading, 10)
                     Text(note.date)
                         .foregroundColor(.primary)
                         .font(.primary(.semiBold, size: 13))
+                        .padding(.leading, 10)
+                    Text(note.title)
+                        .lineLimit(1)
+                        .foregroundColor(.primaryRed)
+                        .font(.primary(.bold, size: 17))
                         .padding(.leading, 10)
             }
             .padding(4)
@@ -107,9 +108,8 @@ struct NoteViewItem : View {
                 .padding(.trailing)
                 .padding(.leading)
 
-            
-//            note.description != nil ?
             Text(note.description)
+                .lineLimit(3)
                 .fixedSize(horizontal: false, vertical: true)
                 .font(.primary(.regular, size: 13))
                 .foregroundColor(.primary)
@@ -119,10 +119,7 @@ struct NoteViewItem : View {
                 .padding(.bottom, 8)
 
         })
-//        .background(Color.white)
         .cornerRadius(8)
-//        .shadow(color: Color.black.opacity(0.3), radius: 8, x: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/, y: 3)
-//        .padding()
     }
     
 }
