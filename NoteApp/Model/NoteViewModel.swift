@@ -48,16 +48,12 @@ class NoteViewModel: ObservableObject {
         notes.append(newItem)
     }
     
-//    func updateNotes(note: NoteModel) {
-//        if let index = notes.firstIndex(where: { $0.id == note.id}) {
-//            notes[index] = note.updateCompletion()
-//        }
-//    }
     
-    func updateNotes(id: UUID, title: String, date: String, description: String) {
+    
+    func updateNotes(id: UUID, title: String,
+                     date: String, description: String) {
         if let note = notes.first(where: { $0.id == id}) {
             let index = notes.firstIndex(of: note)
-//            notes[index] = note.updateCompletion()
             notes[index!].title = title
             notes[index!].date = date
             notes[index!].description = description

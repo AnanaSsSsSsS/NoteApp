@@ -14,6 +14,7 @@ struct NoteDetailView: View {
     @State var newTitle: String = ""
     @State var newDate: String = ""
     @State var newDescription: String = ""
+    let caracterLimit = 25
     
     var leadingButton: some View {
         HStack {
@@ -47,9 +48,19 @@ struct NoteDetailView: View {
     
     func updateMyNewNote() {
         
-        noteViewModel.updateNotes(id: note.id, title: note.title, date: note.date, description: note.description)
+        noteViewModel.updateNotes(id: note.id, title: note.title, date: takeDate(), description: note.description)
         
         noteViewModel.saveNotes()
+    }
+    
+    func takeDate() -> String {
+        var time = NSDate()
+        var formatter = DateFormatter()
+        formatter.dateFormat = "dd.MM.YYYY HH:mm:ss"
+        formatter.timeZone = TimeZone(secondsFromGMT: 0)
+        var formatteddate = formatter.string(from: time as Date)
+        let date = "\(formatteddate)"
+            return date
     }
     
 }
@@ -69,7 +80,8 @@ extension NoteDetailView {
     private var mainBody: some View {
         VStack(alignment: .leading, spacing: 4) {
             if #available(iOS 15.0, *) {
-                TextEditor(text: $note.title)
+                TextField("", text: $note.title)
+                    .disabled(newTitle.count > caracterLimit)
                     .multilineTextAlignment(.leading)
                     .textSelection(.enabled)
                     .foregroundColor(.primaryRed)
@@ -78,7 +90,8 @@ extension NoteDetailView {
                     .padding(.top, 15)
                     .padding(.horizontal)
             } else {
-                TextEditor(text: $note.title)
+                TextField("", text: $note.title)
+                    .disabled(newTitle.count > caracterLimit)
                     .multilineTextAlignment(.leading)
                     .foregroundColor(.primaryRed)
                     .lineLimit(1)

@@ -15,12 +15,17 @@ struct AddNewNote: View {
     @EnvironmentObject var noteViewModel: NoteViewModel
     @Environment(\.presentationMode) var presentedMode
     
+    
     var leadingButton: some View {
-        Button(action: {
-            presentedMode.wrappedValue.dismiss()
-        }) {
-            Image(systemName: "chevron.backward")
-                .foregroundColor(.primaryRed)
+        HStack {
+            Button(action: {
+                presentedMode.wrappedValue.dismiss()
+            }) {
+                Image(systemName: "chevron.backward")
+                    .foregroundColor(.primaryRed)
+            }
+            .padding(.trailing, 20)
+            Text(takeDate())
         }
     }
     
@@ -35,11 +40,11 @@ struct AddNewNote: View {
     
     
     var body: some View {
-//        ScrollView{
             VStack (alignment: .leading, spacing: 8){
                 
-                TextEditor(text: $newTitle)
+                TextField("", text: $newTitle)
                     .frame(height: 30)
+                    .multilineTextAlignment(.leading)
                     .foregroundColor(.primaryRed)
                     .lineLimit(1)
                     .font(.headline)
@@ -47,11 +52,13 @@ struct AddNewNote: View {
                     .padding(.horizontal)
                 TextEditor(text: $newDescription)
                     .foregroundColor(Color.black)
+                    .multilineTextAlignment(.leading)
                     .padding()
                 
                 Spacer()
             }
-//        }
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .padding(.vertical, 15)
             .navigationBarBackButtonHidden(true)
             .navigationBarItems(leading: leadingButton,
                                 trailing: doneNote)
@@ -69,7 +76,7 @@ struct AddNewNote: View {
     func takeDate() -> String {
         var time = NSDate()
         var formatter = DateFormatter()
-        formatter.dateFormat = "dd.MM.YYYY HH:mm:ss"
+        formatter.dateFormat = "dd.MM.YYYY"
         formatter.timeZone = TimeZone(secondsFromGMT: 0)
         var formatteddate = formatter.string(from: time as Date)
         let date = "\(formatteddate)"
@@ -84,5 +91,7 @@ struct AddNewNote: View {
 struct AddNewNote_Previews: PreviewProvider {
     static var previews: some View {
         AddNewNote()
+            .previewDevice("iphone 11")
+            .environmentObject(NoteViewModel())
     }
 }

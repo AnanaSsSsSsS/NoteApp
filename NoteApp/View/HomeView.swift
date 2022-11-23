@@ -42,7 +42,11 @@ struct HomeView: View {
                                     Button("tap") {}
                                 }
                             } else {
-                                // Fallback on earlier versions
+                                NavigationLink(destination: NoteDetailView(note: eachNote)
+                                               , label: {
+                                    NoteViewItem(note: eachNote)
+                                }
+                                )
                             }
                             
                         }
@@ -92,13 +96,13 @@ struct NoteViewItem : View {
                 VStack(alignment: .leading, spacing: 4) {
                     Text(note.date)
                         .foregroundColor(.primary)
-                        .font(.primary(.semiBold, size: 13))
-                        .padding(.leading, 10)
+                        .font(.primary(.semiBold, size: 9))
+                        .padding(.leading, 12)
                     Text(note.title)
                         .lineLimit(1)
                         .foregroundColor(.primaryRed)
                         .font(.primary(.bold, size: 17))
-                        .padding(.leading, 10)
+                        .padding(.leading, 9)
             }
             .padding(4)
             .frame(maxWidth: .infinity, alignment: .leading)
@@ -109,11 +113,11 @@ struct NoteViewItem : View {
                 .padding(.leading)
 
             Text(note.description)
-                .lineLimit(3)
+                .lineLimit(2)
                 .fixedSize(horizontal: false, vertical: true)
                 .font(.primary(.regular, size: 13))
                 .foregroundColor(.primary)
-                .lineSpacing(10.0)
+                .lineSpacing(7.0)
                 .padding(.leading, 13)
                 .padding(.top, 8)
                 .padding(.bottom, 8)
@@ -131,6 +135,7 @@ struct HomeViewPreview: PreviewProvider {
         HomeView()
             .previewDevice("iphone 11")
             .environmentObject(NoteViewModel())
+            .preferredColorScheme(.dark)
     }
 }
 
