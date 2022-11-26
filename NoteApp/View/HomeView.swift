@@ -13,7 +13,7 @@ struct HomeView: View {
             .font(.primary(.bold, size: 23))
             .foregroundColor(.primary)
     }
-    
+     
     init() {
         UINavigationBar.appearance().backgroundColor = UIColor(Color("backgroundForTitle"))
         UINavigationBar.appearance().tintColor = UIColor(Color.white)
