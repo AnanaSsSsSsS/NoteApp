@@ -6,30 +6,13 @@ struct NoteDetailView: View {
     @State var note: NoteModel    // для использования массива с данными и возможности вставлять сразу в text editor без использования .onApear{newTitle = note.title}
     
     @Environment(\.presentationMode) var presentedMode
-    //: Binding<PresentationMode>
     
     @EnvironmentObject var noteViewModel: NoteViewModel
 
-    
     @State var newTitle: String = ""
     @State var newDate: String = ""
     @State var newDescription: String = ""
     let caracterLimit = 25
-    
-    var leadingButton: some View {
-        HStack {
-            Button(action: {
-                presentedMode.wrappedValue.dismiss()
-            }) {
-                Image(systemName: "chevron.backward")
-                    .foregroundColor(.primaryRed)
-            }
-            Spacer()
-            Text(note.date)
-                .foregroundColor(.black)
-
-        }
-    }
     
     var body: some View {
                 
@@ -37,26 +20,21 @@ struct NoteDetailView: View {
         
         .background(Color("backgroundForTitle"))
         .navigationBarItems(leading: leadingButton,
-                            trailing: Button(action: {
-                        updateMyNewNote()
-            presentedMode.wrappedValue.dismiss()
-        }){ Image(systemName: "checkmark")
-        }
-                .foregroundColor(.primaryRed))
+                            trailing: trailingButton)
         .navigationBarBackButtonHidden(true)
     }
     
+    
     func updateMyNewNote() {
-        
         noteViewModel.updateNotes(id: note.id, title: note.title, date: takeDate(), description: note.description)
-        
+    
         noteViewModel.saveNotes()
     }
     
     func takeDate() -> String {
         var time = NSDate()
         var formatter = DateFormatter()
-        formatter.dateFormat = "dd.MM.YYYY HH:mm:ss"
+        formatter.dateFormat = "dd.MM.yyyy"
         formatter.timeZone = TimeZone(secondsFromGMT: 0)
         var formatteddate = formatter.string(from: time as Date)
         let date = "\(formatteddate)"
@@ -69,7 +47,7 @@ struct NoteDetailViewPreview: PreviewProvider {
     
     static var previews: some View {
         NavigationView {
-            NoteDetailView(note: NoteModel(id: UUID(), title: "FHDJHJGF", date: "13/10/1957", description: "NFJDSFI FSFH SFDSJKN NFKVJDSN JFNS"))
+            NoteDetailView(note: NoteModel(id: UUID(), title: "FHDJHJGF", date: "13.10.1957", description: "NFJDSFI FSFH SFDSJKN NFKVJDSN JFNS"))
         }
     }
 
@@ -77,6 +55,8 @@ struct NoteDetailViewPreview: PreviewProvider {
 }
 
 extension NoteDetailView {
+    
+    // MARK: mainBody
     private var mainBody: some View {
         VStack(alignment: .leading, spacing: 4) {
             if #available(iOS 15.0, *) {
@@ -117,5 +97,38 @@ extension NoteDetailView {
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding(.vertical, 15)
     }
+    
+    // MARK: leadingButton
+    private var leadingButton: some View {
+        HStack {
+            Button(action: {
+                presentedMode.wrappedValue.dismiss()
+            }) {
+                Image(systemName: "chevron.backward")
+                    .foregroundColor(.primaryRed)
+            }
+            Spacer()
+            VStack {
+                Text(note.date)
+                    .foregroundColor(.black)
+                Divider()
+                    .frame(height: 2)
+                    .overlay(.black)
+            }
+
+        }
+    }
+    
+    // MARK: trailingButton
+    private var trailingButton: some View {
+        Button(action: {
+            updateMyNewNote()
+            presentedMode.wrappedValue.dismiss()}){
+                Image(systemName: "checkmark")
+            }
+            .foregroundColor(.primaryRed)
+    }
+    
+    
 }
 
