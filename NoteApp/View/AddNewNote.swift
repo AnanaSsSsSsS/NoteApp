@@ -10,6 +10,7 @@ import SwiftUI
 
 struct AddNewNote: View {
     
+    @AppStorage("isDark") private var isDark = false
     @State var newTitle: String = ""
     @State var newDescription: String = ""
     @EnvironmentObject var noteViewModel: NoteViewModel
@@ -27,6 +28,8 @@ struct AddNewNote: View {
             .navigationBarItems(leading: leadingButton,
                                 trailing: doneNote)
             .navigationBarBackButtonHidden(true)
+            .background(Color("backgroundColor"))
+            .preferredColorScheme(isDark ? .dark : .light)
         }
     
     
@@ -97,10 +100,21 @@ extension AddNewNote {
                 .font(.headline)
                 .padding(.top, 15)
                 .padding(.horizontal)
-            TextEditor(text: $newDescription)
-                .foregroundColor(Color.black)
-                .multilineTextAlignment(.leading)
-                .padding()
+            if #available(iOS 16.0, *) {
+                TextEditor(text: $newDescription)
+                    .multilineTextAlignment(.leading)
+                    .textSelection(.enabled)
+                    .scrollContentBackground(.hidden) // <- Hide it
+                    .foregroundColor(Color("textColor"))
+                    .padding()
+                    .background(Color("backgroundColor"))
+            } else {
+                TextEditor(text: $newDescription)
+                    .multilineTextAlignment(.leading)
+                    .foregroundColor(Color("textColor"))
+                    .padding()
+                    .background(Color("backgroundColor"))
+            }
             
             Spacer()
         }

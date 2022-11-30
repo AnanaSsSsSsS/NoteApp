@@ -5,6 +5,7 @@ import SwiftUI
 struct HomeView: View {
     
     @EnvironmentObject var noteViewModel: NoteViewModel
+    @AppStorage("isDark") private var isDark = false
     
     init() {
         UINavigationBar.appearance().backgroundColor = UIColor(Color("backgroundForTitle"))
@@ -27,7 +28,7 @@ struct HomeView: View {
                     }
                 }
             }
-            .background(Color.white)
+            .background(Color("backgroundColor"))
             .navigationBarTitleDisplayMode(.inline)
             .navigationBarItems(leading: leadingTitle, trailing: NavigationLink(destination: SettingsView(), label: {
                 Image(systemName: "list.bullet.indent")
@@ -36,6 +37,7 @@ struct HomeView: View {
                 })
             )
         }
+        .preferredColorScheme(isDark ? .dark : .light)
     }
     
 }
@@ -43,12 +45,14 @@ struct HomeView: View {
 
 
 struct NoteViewItem : View {
+    @AppStorage("isDark") private var isDark = false
     
     let note: NoteModel
     
     var body: some View {
         
         theNoteView
+            .preferredColorScheme(isDark ? .dark : .light)
     }
     
 }
@@ -72,7 +76,7 @@ extension HomeView {
     private var leadingTitle: some View {
         Text("My Notes")
             .font(.primary(.bold, size: 23))
-            .foregroundColor(.primary)
+            .foregroundColor(Color("textColor"))
     }
     
     // MARK: listWithItems
@@ -86,6 +90,7 @@ extension HomeView {
                         NoteViewItem(note: eachNote)
                     }
                     )
+                    .background(Color("backgroundColor"))
                     .swipeActions(edge: .leading, allowsFullSwipe: true) {
                         Button("tap") {}
                     }
@@ -95,12 +100,14 @@ extension HomeView {
                         NoteViewItem(note: eachNote)
                     }
                     )
+                    .background(Color("backgroundColor"))
                 }
                 
             }
             .onDelete(perform: noteViewModel.deleteNotes)
             .onMove(perform: noteViewModel.moveNotes)
         }
+        .background(Color("backgroundColor"))  // not working
         .listStyle(PlainListStyle())
     }
     

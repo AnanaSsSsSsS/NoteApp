@@ -4,27 +4,28 @@ import SwiftUI
 
 struct SettingsView: View {
 
-@State private var StartNightMode = false
+@AppStorage("isDark") private var isDark = false
 @State private var DemandPassword = false
 @State private var SizeOfFont = 10
 @Environment(\.presentationMode) var presentedMode
     
 
-var body: some View {
-    
-        VStack{
-            Form {
-                
-                fullSection
-
-                aboutMe
-                
-            }
-        .navigationBarItems(leading: leadingButton)
-        .navigationBarBackButtonHidden(true)
+    var body: some View {
+            VStack {
+                    Form {
+                        
+                        fullSection
+                        
+                        aboutMe
+                        
+                    }
+                .preferredColorScheme(isDark ? .dark : .light)
+                .background(Color("backgroundColor"))
+                .environment(\.colorScheme, isDark ? .dark : .light)
+                .navigationBarItems(leading: leadingButton)
+                .navigationBarBackButtonHidden(true)
+        }
     }
-}
-
 }
 
 
@@ -54,7 +55,7 @@ extension SettingsView {
         Section(header: Text("Settings")
             .foregroundColor(.gray)
             .fontWeight(.semibold)){
-            Toggle("Night Mode", isOn: $StartNightMode)
+                Toggle("Night Mode", isOn: $isDark)
                 .foregroundColor(.red)
             Toggle("Password", isOn: $DemandPassword)
                 .foregroundColor(.green)

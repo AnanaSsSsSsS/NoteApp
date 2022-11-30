@@ -3,6 +3,8 @@ import SwiftUI
 
 struct NoteDetailView: View {
     
+
+    
     @State var note: NoteModel    // для использования массива с данными и возможности вставлять сразу в text editor без использования .onApear{newTitle = note.title}
     
     @Environment(\.presentationMode) var presentedMode
@@ -12,13 +14,20 @@ struct NoteDetailView: View {
     @State var newTitle: String = ""
     @State var newDate: String = ""
     @State var newDescription: String = ""
+    
+    @AppStorage("isDark") private var isDark = false
     let caracterLimit = 25
+    
+//    init() {
+//           UITextView.appearance().backgroundColor = .clear
+//       } // TO HIDE DEFAULT EDITTEXT BACKGROUND
     
     var body: some View {
                 
         mainBody
         
-        .background(Color("backgroundForTitle"))
+        .preferredColorScheme(isDark ? .dark : .light)
+        .background(Color("backgroundColor"))
         .navigationBarItems(leading: leadingButton,
                             trailing: trailingButton)
         .navigationBarBackButtonHidden(true)
@@ -69,6 +78,7 @@ extension NoteDetailView {
                     .font(.headline)
                     .padding(.top, 15)
                     .padding(.horizontal)
+                    .background(Color("backgroundColor"))
             } else {
                 TextField("", text: $note.title)
                     .disabled(newTitle.count > caracterLimit)
@@ -78,19 +88,23 @@ extension NoteDetailView {
                     .font(.headline)
                     .padding(.top, 15)
                     .padding(.horizontal)
+                    .background(Color("backgroundColor"))
             }
             
-            if #available(iOS 15.0, *) {
+            if #available(iOS 16.0, *) {
                 TextEditor(text: $note.description)
                     .multilineTextAlignment(.leading)
                     .textSelection(.enabled)
-                    .foregroundColor(Color.black)
+                    .scrollContentBackground(.hidden) // <- Hide it
+                    .foregroundColor(Color("textColor"))
                     .padding()
+                    .background(Color("backgroundColor"))
             } else {
                 TextEditor(text: $note.description)
                     .multilineTextAlignment(.leading)
-                    .foregroundColor(Color.black)
+                    .foregroundColor(Color("textColor"))
                     .padding()
+                    .background(Color("backgroundColor"))
             }
 
         }
@@ -107,14 +121,16 @@ extension NoteDetailView {
                 Image(systemName: "chevron.backward")
                     .foregroundColor(.primaryRed)
             }
-            Spacer()
+
             VStack {
                 Text(note.date)
-                    .foregroundColor(.black)
+                    .foregroundColor(Color("textColor"))
                 Divider()
                     .frame(height: 2)
-                    .overlay(.black)
+                    .overlay(Color("textColor"))
             }
+            .padding(.leading, UIScreen.main.bounds.height/7.5)
+            // ВСЕ РАВНО НИХРЕНА НЕ РОВНО ЧЕРТИЛА
 
         }
     }
